@@ -22,6 +22,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.util.Properties;
 
@@ -42,12 +43,28 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
     @Bean
     public DataSource dataSource() {
-        BasicDataSource dataSource = new BasicDataSource();
+//        BasicDataSource dataSource = new BasicDataSource();
+//
+//        dataSource.setDriverClassName(environment.getRequiredProperty("database.driver"));
+//        dataSource.setUrl(environment.getRequiredProperty("database.url"));
+//        dataSource.setUsername(environment.getRequiredProperty("database.username"));
+//        dataSource.setPassword(environment.getRequiredProperty("database.password"));
+        DataSource dataSource = null;
+        try {
+        InitialContext cxt = new InitialContext();
+        if (cxt == null) {
+            System.out.println("******************************");
+        }
 
-        dataSource.setDriverClassName(environment.getRequiredProperty("database.driver"));
-        dataSource.setUrl(environment.getRequiredProperty("database.url"));
-        dataSource.setUsername(environment.getRequiredProperty("database.username"));
-        dataSource.setPassword(environment.getRequiredProperty("database.password"));
+        dataSource = (DataSource) cxt.lookup("java:/comp/env/jdbc/postgres");
+
+        if (dataSource == null) {
+            System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
+        }
+    } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("PIPECCCCCCCCCCCCCCCCCCCCCCCCCCC");
+        }
 
         return dataSource;
     }
