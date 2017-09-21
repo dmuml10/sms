@@ -1,8 +1,2 @@
 language: java  
-before_script:
-- cd src/main/ngapp
-- npm install -g @angular/cli
-- npm install
-- ng build
-- cd ..
 script: "mvn clean package"
