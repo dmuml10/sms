@@ -2,5 +2,4 @@ language: java
 before_install:  
 - npm install -g angular-cli
 - npm install
-- ng build 
 script: "mvn clean package"
