@@ -1,9 +1,6 @@
 language: java  
 
 install:
-  - . $HOME/.nvm/nvm.sh
-  - nvm install stable
-  - nvm use stable
   - npm install -g @angular/cli
   - npm install -g karma
   - npm install
