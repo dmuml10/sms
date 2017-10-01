@@ -10,9 +10,9 @@ script: "mvn clean package -X"
 deploy:
   - provider: s3
   - provider: codedeploy
-    access_key_id: "AKIAIFOSIN55MDVMPREA"
-    secret_access_key: "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"
-    bucket: "aws-sms-bucket"
-    key: latest/sms.war
-    application: SMS
-    deployment_group: MyDeploymentGroup
+  - access_key_id: "AKIAIFOSIN55MDVMPREA"
+  - secret_access_key: "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"
+  - bucket: "aws-sms-bucket"
+  - key: latest/sms.war
+  - application: SMS
+  - deployment_group: MyDeploymentGroup
