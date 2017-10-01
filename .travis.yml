@@ -12,7 +12,6 @@ install:
 
 deploy:
   - provider: s3
-    ⋮ # rest of S3 deployment for MyApp.zip
   - provider: codedeploy
     access_key_id: "AKIAIFOSIN55MDVMPREA"
     secret_access_key: "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"
