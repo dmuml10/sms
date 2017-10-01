@@ -8,7 +8,7 @@ install:
   - npm install -g karma
   - npm install
 
-#script: mvn clean package -X
+script: "mvn clean package -X"
 
 deploy:
   - provider: s3
